@@ -1,0 +1,169 @@
+body {
+  background-color: rgb(221, 221, 221);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 50px calc((100vh - 150px) / 2) 50px calc((100vh - 150px) / 2);
+  grid-template-areas: "buttons"
+                       "sql-tabs"
+                       "sql"
+                       "code-tabs"
+                       "code";
+}
+
+nav {
+  grid-area: buttons;
+}
+
+ul.menu {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#sqlt {
+  grid-area: sql-tabs;
+}
+
+.pane {
+  background-color: white;
+  overflow: scroll;
+  height: calc((100vh - 150px) / 2);
+}
+
+#query {
+  grid-area: sql;
+}
+
+#codet {
+  grid-area: code-tabs;
+}
+
+#home {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+#home:visited {
+  color: #000;
+}
+
+ul.tabs {
+  display: flex;
+  align-items: flex-end;
+}
+
+ul.tabs li {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+ul.tabs li span {
+  display: block;
+  padding: 10px;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+ul.tabs li a {
+  display: block;
+  padding: 10px;
+  background: #aaa;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+ul.tabs li a.selected {
+  background: white;
+}
+
+#godoc {
+  grid-area: code;
+}
+
+.errors {
+  height: 50vh;
+  background: #ececec;
+  grid-area: code;
+  z-index: 100;
+}
+
+.errors > pre {
+  margin: 14px;
+  font-size: 1.25em;
+  line-height: 1.4;
+}
+
+.err {
+  color: #900;
+}
+
+.CodeMirror {
+  height: auto;
+}
+
+@media (min-width: 1200px) {
+  section {
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 50px 50px calc(100vh - 100px);
+    grid-template-areas: "buttons buttons"
+                         "sql-tabs code-tabs"
+                         "sql code";
+  }
+
+  #query {
+    height: 100%;
+  }
+
+  .errors {
+    height: 100%;
+  }
+
+  #godoc {
+    height: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(20, 20, 20);
+    color: white;
+  }
+  #home, #home:visited {
+    color: white;
+  }
+  ul.tabs li a.selected {
+    background-color: rgb(32, 39, 43);
+  }
+  .errors {
+    background: rgb(61, 67, 70);
+  }
+  .err {
+    color: black;
+  }
+  .pane {
+    background-color: rgb(32, 39, 43);
+    scrollbar-color: #6e7880 rgb(49, 57, 62);
+  }
+  ul.tabs li a {
+    background-color: black;
+  }
+  ul.tabs li a {
+    color: white;
+  }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>sqlc - Playground</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/normalize.css" />
+    <link rel="stylesheet" href="/static/codemirror.css" />
+    <link rel="stylesheet" href="/static/codemirror-theme.css" />
+    <link rel="stylesheet" href="/static/app.css" />
+  </head>
+  <body>
+    <section>
+      <nav>
+        <ul class="menu">
+          <li><a id="home" href="https://play.sqlc.dev">play.sqlc.dev</a></li>
+        </ul>
+      </nav>
+      <noscript class="errors">
+        <pre>sqlc generate failed.</pre>
+        <pre class="err">The sqlc playground requires JavaScript.</pre>
+      </noscript>
+      <div id="errors" class="errors {{if .Stderr}}{{else}}hidden{{end}}">
+        <pre>sqlc generate failed.</pre>
+        <pre class="err" id="stderr">{{ .Stderr }}</pre>
+      </div>
+      <ul class="tabs" id="sqlt">
+        <li><span>Input</span></li>
+      </ul>
+      <div class="pane" id="query">
+        <textarea class="hidden" id="sql" name="sql"></textarea>
+      </div>
+      <ul class="tabs" id="codet">
+        <li><span>Output</span></li>
+      </ul>
+      <div class="pane" id="godoc">
+        <textarea class="hidden" id="go" name="go"></textarea>
+      </div>
+    </section>
+    <script type="application/json" id="input">{{.Input}}</script>
+    <script type="application/json" id="output">{{.Output}}</script>
+    <script type="text/javascript" src="/static/codemirror.js"></script>
+    <script type="text/javascript" src="/static/sql.js"></script>
+    <script type="text/javascript" src="/static/go.js"></script>
+    <script type="text/javascript" src="/static/app.js"></script>
+  </body>
+</html>
